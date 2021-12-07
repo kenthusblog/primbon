@@ -135,9 +135,10 @@
 
 <div class="card" style="height: auto !important;">
 <div id="w9-kalkulator" style="height: auto !important;">
-	<h2>Kalkulator Cek Weton</h2>
-	<p>Isi tanggal lahir kamu dibawah</p>
+	<h2>Cek Kecocokan Jodoh</h2>
+	<p>Cek jodoh berdasarkan weton</p>
 	<form method="post">
+	<div><label>Pria</label></div>
 	<input class="input_tggl" placeholder="Tggl" maxlength="2" name="tga" onkeypress="return kodeScript(event,'0123456789',this)" size="2" required="">
 	<select name="bal" class="kal-select" required="">
 		<option selected="" value="Januari">Januari</option>
@@ -155,53 +156,61 @@
 	</select>
 	<input class="input_tahun" placeholder="Tahun" id="tunwtn" maxlength="4" name="tun" onkeypress="return kodeScript(event,'0123456789',this)" size="2" required="">
 	
+	<div><label>Wanita</label></div>
+	<input class="input_tggl" placeholder="Tggl" maxlength="2" name="tga2" onkeypress="return kodeScript(event,'0123456789',this)" size="2" required="">
+	<select name="bal2" class="kal-select" required="">
+		<option selected="" value="Januari">Januari</option>
+		<option value="Februari">Februari</option>
+		<option value="Maret">Maret</option>
+		<option value="April">April</option>
+		<option value="Mei">Mei</option>
+		<option value="Juni">Juni</option>
+		<option value="Juli">Juli</option>
+		<option value="Agustus">Agustus</option>
+		<option value="September">September</option>
+		<option value="Oktober">Oktober</option>
+		<option value="November">November</option>
+		<option value="Desember">Desember</option>
+	</select>
+	<input class="input_tahun" placeholder="Tahun" id="tunwtn" maxlength="4" name="tun2" onkeypress="return kodeScript(event,'0123456789',this)" size="2" required="">
+	
 	<br><br>
 	<button type="button" onclick="rmlk(this.form)" class="button">Submit</button>
 	</form>
-	
+	<!-- [K9 W9] Display -->
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-4551434964420634" data-ad-slot="1640931021" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_2_expand" style="border: medium none; height: 280px; width: 563px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_2_anchor" style="border: medium none; height: 280px; width: 563px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:563px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-4551434964420634&amp;output=html&amp;h=280&amp;slotname=1640931021&amp;adk=2379693692&amp;adf=1333287639&amp;pi=t.ma~as.1640931021&amp;w=563&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1638895837&amp;rafmt=1&amp;psa=1&amp;format=563x280&amp;url=https%3A%2F%2Fwww.walisongo.co.id%2Fprimbon-jodoh-online%2F&amp;flash=0&amp;fwr=0&amp;fwrattr=true&amp;rpe=1&amp;resp_fmts=3&amp;wgl=1&amp;dt=1638907189770&amp;bpp=7&amp;bdt=1854&amp;idt=476&amp;shv=r20211206&amp;mjsv=m202112010101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Ddcf580fab9d3e7cc-2287b2dc5ecf00ab%3AT%3D1638807550%3ART%3D1638807550%3AS%3DALNI_MbIZ3IujQcY2lhTf6LEDONzXrZqLg&amp;prev_fmts=1120x280%2C645x280&amp;correlator=6972288323217&amp;frm=20&amp;pv=1&amp;ga_vid=1052944045.1638807539&amp;ga_sid=1638907190&amp;ga_hid=1087979139&amp;ga_fc=1&amp;u_tz=420&amp;u_his=7&amp;u_h=768&amp;u_w=1366&amp;u_ah=728&amp;u_aw=1366&amp;u_cd=24&amp;u_sd=1&amp;adx=196&amp;ady=2042&amp;biw=1349&amp;bih=615&amp;scr_x=0&amp;scr_y=1195&amp;eid=44750773%2C44753740&amp;oid=2&amp;pvsid=3494678883827365&amp;pem=603&amp;tmod=1863107769&amp;ref=https%3A%2F%2Fwww.walisongo.co.id%2Fmenghitung-weton-pernikahan%2F&amp;eae=0&amp;fc=896&amp;brdim=-8%2C-8%2C-8%2C-8%2C1366%2C0%2C1382%2C744%2C1366%2C615&amp;vis=1&amp;rsz=%7C%7CeEbr%7C&amp;abl=CS&amp;pfx=0&amp;fu=128&amp;bc=31&amp;ifi=3&amp;uci=a!3&amp;btvi=1&amp;fsb=1&amp;xpc=JKkC76zGIO&amp;p=https%3A//www.walisongo.co.id&amp;dtd=767" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!3" data-google-query-id="CJzrjom90vQCFZBQfQod2PIDdw" data-load-complete="true" width="563" height="280" frameborder="0"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 	<span id="line"></span>
 </div>
 
 <div id="hasil" style="display:none">
-	<p class="hasilhead"><b>Hasil Cek Weton Anda</b></p>
-	<p class="item">Tanggal Lahir (Masehi)</p>
-	<p class="value"><b><span id="tggl_lahir_masehi"></span></b></p>
-	<p class="item">Tanggal Lahir (Hijriyah)</p>
-	<p class="value"><b><span id="tggl_lahir_hijriyah"></span></b></p>
-	<p class="item">Tanggal Lahir (Jawa)</p>
-	<p class="value"><b><span id="tggl_lahir_jawa"></span></b></p>
-	<p class="item">Pasaran</p>
-	<p class="value"><b><span id="pasaran"></span></b></p>
-	<p class="item">Neptu</p>
-	<p class="value"><b><span id="neptu"></span></b></p>
-	<p class="item">Warsa</p>
-	<p class="value"><b><span id="warsa"></span></b></p>
+	<p><b>Hasil</b></p>
+	<p>Tanggal Lahir Pria: <b><span id="tggl_lahir_pria"></span></b>, <span id="pasaran_pria"></span></p>
+	<p>Neptu Pria: <b><span id="neptu_pria"></span></b></p>
+	<p>Tanggal Lahir Wanita: <b><span id="tggl_lahir_wanita"></span></b>, <span id="pasaran_wanita"></span></p>
+	<p>Neptu Wanita: <b><span id="neptu_wanita"></span></b></p>
+	<p>Total Neptu: <b><span id="totneptu"></span></b></p>
+	<p class="alertinfo">Jangan jadikan penjelasan pada aplikasi ini sebagai referensi tunggal, kebenaran semata hanya milik Allah Swt.</p>
+	<p><b>Penjelasan:</b></p>
+	<p><span id="penjelasan"></span></p>
 </div>
-<div id="adsresult"></div>
-<button id="downloadbtn" style="display:none">Download Hasil Ini</button>
-<a href="" id="downloadimg" style="display:none"></a>
 
-<div id="preview"></div>
-
-		<div id="sc">source code by kenthus</div>	
+<div id="sc">Dibuat oleh <a href="https://www.walisongo.co.id">walisongo.co.id</a></div>
 </div>
-  
-<div id="myModal" class="modal">
+		    
+		    <div id="myModal" class="modal">
+
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">×</span>
     <p id="textmodal"></p>
   </div>
-</div>		    
-	<div id="adsmodal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div id="countdowntimer">Mohon tunggu 7 detik</div>
-	<span id="adscon"></span>
-    <div><button id="save" class="disable">DOWNLOAD</button></div>
-	<p style="text-align:center"><a id="batal" onclick="batal()" style="display:none; text-decoration:underline; cursor:pointer">Batal</a></p>
-  </div>
-</div>	 <script src="https://www.walisongo.co.id/kj/js/jquery.min.js" defer=""></script>   
+
+</div>
+		    
+		    
 		    
               
               </div>
@@ -211,6 +220,181 @@
       
       </main>
     <!-- End #main -->
+	
+	
+	
+	
+	<style>
+#sc{
+	margin-top: 10px;
+	font-size: 75%;
+	text-align:center;
+	padding: 10px;
+}
+.card{
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.29);
+    margin-bottom: 15px;
+}
+.alertinfo{
+	padding: 10px;
+    font-size: 75%;
+    background-color: #259fca;
+    border: 1px solid #075069;
+    border-radius: 5px;
+    color: white;
+}
+input:not([type]).input_tahun{
+	width: 75px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 2px 2px 10px #000000;
+    border-radius: 5px;
+	color: black;
+	background-color: white;
+    border-bottom: initial;
+    outline: initial;
+    height: initial;
+    width: initial;
+    font-size: initial;
+    box-sizing: initial;
+    transition: initial;
+}
+input:not([type]).input_tggl{
+	padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 2px 2px 10px #000000;
+    border-radius: 5px;
+	color: black;
+	background-color: white;
+    border-bottom: initial;
+    outline: initial;
+    height: initial;
+    width: initial;
+    font-size: initial;
+    box-sizing: initial;
+    transition: initial;
+}
+
+.button{
+margin-bottom: 2px;
+    padding: 10px;
+    background: #778ca3;
+    border: none;
+    border-bottom: 2px solid rgba(50,50,50,.1);
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 15px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: .85em;
+    font-weight: 700;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+    transition: all .3s;
+	}
+#w9-kalkulator{
+	background-image: url("https://i0.wp.com/www.walisongo.co.id/wp-content/uploads/2020/04/night.jpg");
+	background-color: black;
+    color: #fff;
+    padding: 20px 5% 20px 5%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px 2px #afafaf;
+	background-size: cover;
+}
+#w9-kalkulator h2{
+	line-height:1;
+}
+select.kal-select{
+    margin: 0px 3px 10px 3px !important;
+    width: 110px !important;
+    font-size: 15px !important;
+    padding: 0px 10px !important;
+    height: 39px !important;
+    border: none;
+    box-shadow: 2px 2px 10px #000000;
+    border-radius: 5px;
+	background-color:white;
+	display:initial;
+	color:black;
+}
+	#hasil{
+		padding: 10px;
+		border: 1px solid white;
+		border-radius: 5px;
+		margin-top:20px;
+	}
+	
+	
+	/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -17px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.info{
+	padding: 10;
+    background: darkturquoise;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+	}
+</style>
+	
+	
+	
+	
+	
+	
+	
+	
+	
                                 <p align="center">Bagikan :
                                 <div class="sharethis-inline-share-buttons"></div></p>
 	
