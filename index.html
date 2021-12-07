@@ -142,7 +142,7 @@
 		<div class="card">
 			<div class="card-head">
 				<h2 id="hari_ini">Kalender Jawa Hari Ini</h2>
-				<p id="tampil" style="margin:0px"></p>
+				<p id="hari_ini" style="margin:0px"></p>
 			</div>
 			<div class="card-content">
 				<table class="cal_table" border="1">
@@ -187,13 +187,7 @@ var g_month = d.getMonth();
 var g_year = d.getFullYear();
 $('#month').text(bulan[g_month]);
 $('#year').text(g_year);
-	
 
-var tanggal = date.getDate();
-var hari = date.getDay();		
-var tampilTanggal = " " + d + ", " + tanggal + " " + bulan + " " + g_year;
- 
-document.getElementById("tampil").innerHTML = tampilTanggal;
 </script>
 
 <script type="text/javascript" src="https://www.walisongo.co.id/kj/js/HijriJs.js"></script>
@@ -301,10 +295,10 @@ document.getElementById("tampil").innerHTML = tampilTanggal;
 					</div>
 				</div><br>
 				<div class="card">
-					Hari Libur
+					<b>Hari Libur
 				<div id="harilibur">
 						<ul class="collection">
-						<li class="collection-item"><span class="title">25 Desember : Hari Raya Natal</span><a href="#!" class="secondary-content"></a></li></ul>
+						<li class="collection-item"><span class="title">25 Desember : Hari Raya Natal</span><a href="#!" class="secondary-content"></a></b></li></ul>
 				</div></div>
 				
 			</div>
@@ -313,7 +307,7 @@ document.getElementById("tampil").innerHTML = tampilTanggal;
 		<div class="kalender">
 			<div class="card" align="center">
 				<div class="card-head">
-					<span>Loncat ke</span>
+					<span><b>Loncat ke</b></span>
 				</div>
 				<div class="no-margin">
 					<div class="col-s6">
