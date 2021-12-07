@@ -187,10 +187,15 @@ var g_month = d.getMonth();
 var g_year = d.getFullYear();
 $('#month').text(bulan[g_month]);
 $('#year').text(g_year);
-		
-		var tampilTanggal = "Tanggal: " + hari + ", " + tanggal + " " + bulan + " " + tahun;
+	
+var date = new Date();
+var tahun = date.getFullYear();
+var bulan = date.getMonth();
+var tanggal = date.getDate();
+var hari = date.getDay();		
+var tampilTanggal = "Tanggal: " + hari + ", " + tanggal + " " + bulan + " " + tahun;
  
-    document.getElementById("tampil").innerHTML = tampilTanggal;
+document.getElementById("tampil").innerHTML = tampilTanggal;
 </script>
 
 <script type="text/javascript" src="https://www.walisongo.co.id/kj/js/HijriJs.js"></script>
