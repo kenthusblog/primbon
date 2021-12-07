@@ -142,7 +142,7 @@
 		<div class="card">
 			<div class="card-head">
 				<h2 id="hari_ini">Kalender Jawa Hari Ini</h2>
-				<p id="waktu" style="margin:0px"></p>
+				<p id="tampil" style="margin:0px"></p>
 			</div>
 			<div class="card-content">
 				<table class="cal_table" border="1">
@@ -187,12 +187,15 @@ var g_month = d.getMonth();
 var g_year = d.getFullYear();
 $('#month').text(bulan[g_month]);
 $('#year').text(g_year);
+		
+		var tampilTanggal = "Tanggal: " + hari + ", " + tanggal + " " + bulan + " " + tahun;
+ 
+    document.getElementById("tampil").innerHTML = tampilTanggal;
 </script>
 
 <script type="text/javascript" src="https://www.walisongo.co.id/kj/js/HijriJs.js"></script>
 <script type="text/javascript" src="https://www.walisongo.co.id/kj/js/hari_libur.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script type="text/javascript" src="waktu.js"></script>
 
 
 
