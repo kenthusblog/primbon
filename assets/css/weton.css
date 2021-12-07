@@ -10819,3 +10819,6 @@ blockquote:before{
 		height:30px;
 	}
 }
+
+
+.hightlight{display:inline-flex;background-color:#222;color:#fff;padding:7px;font-size:1.2em}
