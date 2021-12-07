@@ -188,12 +188,11 @@ var g_year = d.getFullYear();
 $('#month').text(bulan[g_month]);
 $('#year').text(g_year);
 	
-var date = new Date();
 var tahun = date.getFullYear();
 var bulan = date.getMonth();
 var tanggal = date.getDate();
 var hari = date.getDay();		
-var tampilTanggal = "Tanggal: " + hari + ", " + tanggal + " " + bulan + " " + tahun;
+var tampilTanggal = "Tanggal: " + d + ", " + tanggal + " " + bulan + " " + g_year;
  
 document.getElementById("tampil").innerHTML = tampilTanggal;
 </script>
