@@ -31,4 +31,4 @@ switch(bulan) {
 }
 var tampilTanggal = "Tanggal: " + hari + ", " + tanggal + " " + bulan + " " + tahun;
  
-    document.getElementById("tampil").innerHTML = tampilTanggal;
+    document.getElementById("waktu").innerHTML = tampilTanggal;
