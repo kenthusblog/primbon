@@ -1,860 +1,196 @@
-var form = document.getElementById('form');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    var nama = document.getElementById('nama').value;
-    var tgl = document.getElementById('tgl').value;
-    tgl = tgl.split('-');
-    var tanggal = parseInt(tgl[2]);
-    var bulan = parseInt(tgl[1]);
-    var tahunasli = parseInt(tgl[0]);
-    var hitungan = weton(tanggal, bulan, tahunasli);
-    var hari = hitungan[0];
-    var pasaran = hitungan[1];
-    var jumlah = hitung(hari, pasaran);
-
-    var nama2 = document.getElementById('namap').value;
-    var tgl2 = document.getElementById('tglp').value;
-    tgl2 = tgl2.split('-');
-    var tanggal2 = parseInt(tgl2[2]);
-    var bulan2 = parseInt(tgl2[1]);
-    var tahunasli2 = parseInt(tgl2[0]);
-    var hitungan2 = weton(tanggal2, bulan2, tahunasli2);
-    var hari2 = hitungan2[0];
-    var pasaran2 = hitungan2[1];
-    var jumlah2 = hitung(hari2, pasaran2);
-
-    var has = hasil(jumlah, jumlah2);
-    var sisa = wetonsisa(jumlah, jumlah2);
-    var tot = jumlah+jumlah2;
-
-
-    document.getElementById('tahun').innerHTML =
-        '<table><p class="promo">Nama Kamu  ' +
-        nama +
-        ' , Lahir '+tgl[2]+'-'+tgl[1]+'-'+tgl[0]+', Hari <b>'+hari+' '+pasaran+' ('+jumlah+')  </b><br> Nama Pasanganmu  ' +
-        nama2 +
-        ', Lahir '+tgl2[2]+'-'+tgl2[1]+'-'+tgl2[0]+', Hari <b>'+hari2+' '+pasaran2+' ('+jumlah2+') </b>.</p>Sehingga hasil perhitungan weton dari kalian berdua adalah <mark><b> ' +
-        has[0] +
-        '    ('+tot+')</b></mark> yang artinya ' +
-        has[1] +
-        ' Dan hasil hitung weton sisa kalian berdua adalah <mark><i>' +
-        sisa[0] +
-        '</i></mark> yang artinya ' +
-        sisa[1] +
-        ' Mungkin itu sedikit uraian dari kami, kami harap hasil tersebut dapat menjadi referensi anda.</table>';
-         
-
+function Hitung(x){
+    var explode =x.split("-");
     
- // console.log(weton(tanggal, bulan, tahunasli));
-});
-
-
-function weton(tanggal, bulan, tahunasli) {
-    var tahun = tahunasli;
-    if (tahun % 20 == 0) {
-        tahunfix = tahun;
-    } else {
-        while (tahun % 20 != 0) {
-            tahun = tahun - 1;
-            tahunfix = tahun;
+        // Menampilkan tanggal, bulan, tahun
+        var hari = explode[2];
+        var tahun = explode[0];
+        var bulan = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        
+        if (explode[1] == "10" || explode[1] == "11" || explode[1] == "12"){
+            var bln=explode[1];
+        }else {
+            bln=explode[1].substr(1,1);
         }
+            bln = bulan[bln];
+
+        var date = [hari, bln, tahun];
+
+    // Menentukan Hari Masehi
+    if (explode[0]%4 == 0){
+		a = ['',31,29,31,30,31,30,31,31,30,31,30,31]
+    }
+	else {
+		a = ['',31,28,31,30,31,30,31,31,30,31,30,31]
     }
 
-    var sisatahun = tahunasli - tahunfix;
-    var tahunawal = 0;
-    var tahunhitung = 5;
-    while (tahunawal < tahunfix) {
-        if ((tahunawal + 20) % 100 == 0) {
-            if (((tahunawal + 20) / 100) % 2 == 1) {
-                if (tahunhitung >= 0) {
-                    tahunhitung = tahunhitung - 11;
-                    if (tahunhitung < 0) {
-                        tahunhitung = tahunhitung + 35;
-                    } else {
-                        tahunhitung = tahunhitung;
-                    }
-                } else {
-                    tahunhitung = tahunhitung + 35;
-                }
-            } else if (((tahunawal + 20) / 100) % 2 == 0) {
-                if (((tahunawal + 20) / 200) % 2 == 1) {
-                    if (tahunhitung >= 0) {
-                        tahunhitung = tahunhitung - 11;
-                        if (tahunhitung < 0) {
-                            tahunhitung = tahunhitung + 35;
-                        } else {
-                            tahunhitung = tahunhitung;
-                        }
-                    } else {
-                        tahunhitung = tahunhitung + 35;
-                    }
-                } else if (((tahunawal + 20) / 200) % 2 == 0) {
-                    if (tahunhitung >= 0) {
-                        tahunhitung = tahunhitung - 10;
-                        if (tahunhitung < 0) {
-                            tahunhitung = tahunhitung + 35;
-                        } else {
-                            tahunhitung = tahunhitung;
-                        }
-                    } else {
-                        tahunhitung = tahunhitung + 35;
-                    }
-                }
-            }
-        } else {
-            if (tahunhitung >= 0) {
-                tahunhitung = tahunhitung - 10;
-                if (tahunhitung < 0) {
-                    tahunhitung = tahunhitung + 35;
-                } else {
-                    tahunhitung = tahunhitung;
-                }
-            } else {
-                tahunhitung = tahunhitung + 35;
-            }
-        }
-        tahunawal = tahunawal + 20;
-    }
-
-    var bulanhitung;
-    if (bulan == 1) {
-        if (sisatahun == 0) {
-            bulanhitung = 0;
-        } else if (sisatahun == 1) {
-            bulanhitung = 16;
-        } else if (sisatahun == 2) {
-            bulanhitung = 31;
-        } else if (sisatahun == 3) {
-            bulanhitung = 11;
-        } else if (sisatahun == 4) {
-            bulanhitung = 26;
-        } else if (sisatahun == 5) {
-            bulanhitung = 7;
-        } else if (sisatahun == 6) {
-            bulanhitung = 22;
-        } else if (sisatahun == 7) {
-            bulanhitung = 2;
-        } else if (sisatahun == 8) {
-            bulanhitung = 17;
-        } else if (sisatahun == 9) {
-            bulanhitung = 33;
-        } else if (sisatahun == 10) {
-            bulanhitung = 13;
-        } else if (sisatahun == 11) {
-            bulanhitung = 28;
-        } else if (sisatahun == 12) {
-            bulanhitung = 8;
-        } else if (sisatahun == 13) {
-            bulanhitung = 24;
-        } else if (sisatahun == 14) {
-            bulanhitung = 4;
-        } else if (sisatahun == 15) {
-            bulanhitung = 19;
-        } else if (sisatahun == 16) {
-            bulanhitung = 34;
-        } else if (sisatahun == 17) {
-            bulanhitung = 15;
-        } else if (sisatahun == 18) {
-            bulanhitung = 30;
-        } else if (sisatahun == 19) {
-            bulanhitung = 10;
-        }
-    } else if (bulan == 2) {
-        if (sisatahun == 0) {
-            bulanhitung = 31;
-        } else if (sisatahun == 1) {
-            bulanhitung = 12;
-        } else if (sisatahun == 2) {
-            bulanhitung = 27;
-        } else if (sisatahun == 3) {
-            bulanhitung = 7;
-        } else if (sisatahun == 4) {
-            bulanhitung = 22;
-        } else if (sisatahun == 5) {
-            bulanhitung = 3;
-        } else if (sisatahun == 6) {
-            bulanhitung = 18;
-        } else if (sisatahun == 7) {
-            bulanhitung = 33;
-        } else if (sisatahun == 8) {
-            bulanhitung = 13;
-        } else if (sisatahun == 9) {
-            bulanhitung = 29;
-        } else if (sisatahun == 10) {
-            bulanhitung = 9;
-        } else if (sisatahun == 11) {
-            bulanhitung = 24;
-        } else if (sisatahun == 12) {
-            bulanhitung = 4;
-        } else if (sisatahun == 13) {
-            bulanhitung = 20;
-        } else if (sisatahun == 14) {
-            bulanhitung = 0;
-        } else if (sisatahun == 15) {
-            bulanhitung = 15;
-        } else if (sisatahun == 16) {
-            bulanhitung = 30;
-        } else if (sisatahun == 17) {
-            bulanhitung = 11;
-        } else if (sisatahun == 18) {
-            bulanhitung = 26;
-        } else if (sisatahun == 19) {
-            bulanhitung = 6;
-        }
-    } else if (bulan == 3) {
-        if (sisatahun == 0) {
-            bulanhitung = 25;
-        } else if (sisatahun == 1) {
-            bulanhitung = 5;
-        } else if (sisatahun == 2) {
-            bulanhitung = 20;
-        } else if (sisatahun == 3) {
-            bulanhitung = 0;
-        } else if (sisatahun == 4) {
-            bulanhitung = 16;
-        } else if (sisatahun == 5) {
-            bulanhitung = 31;
-        } else if (sisatahun == 6) {
-            bulanhitung = 11;
-        } else if (sisatahun == 7) {
-            bulanhitung = 26;
-        } else if (sisatahun == 8) {
-            bulanhitung = 7;
-        } else if (sisatahun == 9) {
-            bulanhitung = 22;
-        } else if (sisatahun == 10) {
-            bulanhitung = 2;
-        } else if (sisatahun == 11) {
-            bulanhitung = 17;
-        } else if (sisatahun == 12) {
-            bulanhitung = 33;
-        } else if (sisatahun == 13) {
-            bulanhitung = 13;
-        } else if (sisatahun == 14) {
-            bulanhitung = 28;
-        } else if (sisatahun == 15) {
-            bulanhitung = 8;
-        } else if (sisatahun == 16) {
-            bulanhitung = 24;
-        } else if (sisatahun == 17) {
-            bulanhitung = 4;
-        } else if (sisatahun == 18) {
-            bulanhitung = 19;
-        } else if (sisatahun == 19) {
-            bulanhitung = 34;
-        }
-    } else if (bulan == 4) {
-        if (sisatahun == 0) {
-            bulanhitung = 21;
-        } else if (sisatahun == 1) {
-            bulanhitung = 1;
-        } else if (sisatahun == 2) {
-            bulanhitung = 16;
-        } else if (sisatahun == 3) {
-            bulanhitung = 31;
-        } else if (sisatahun == 4) {
-            bulanhitung = 12;
-        } else if (sisatahun == 5) {
-            bulanhitung = 27;
-        } else if (sisatahun == 6) {
-            bulanhitung = 7;
-        } else if (sisatahun == 7) {
-            bulanhitung = 22;
-        } else if (sisatahun == 8) {
-            bulanhitung = 3;
-        } else if (sisatahun == 9) {
-            bulanhitung = 18;
-        } else if (sisatahun == 10) {
-            bulanhitung = 33;
-        } else if (sisatahun == 11) {
-            bulanhitung = 13;
-        } else if (sisatahun == 12) {
-            bulanhitung = 29;
-        } else if (sisatahun == 13) {
-            bulanhitung = 9;
-        } else if (sisatahun == 14) {
-            bulanhitung = 24;
-        } else if (sisatahun == 15) {
-            bulanhitung = 4;
-        } else if (sisatahun == 16) {
-            bulanhitung = 20;
-        } else if (sisatahun == 17) {
-            bulanhitung = 0;
-        } else if (sisatahun == 18) {
-            bulanhitung = 15;
-        } else if (sisatahun == 19) {
-            bulanhitung = 30;
-        }
-    } else if (bulan == 5) {
-        if (sisatahun == 0) {
-            bulanhitung = 16;
-        } else if (sisatahun == 1) {
-            bulanhitung = 31;
-        } else if (sisatahun == 2) {
-            bulanhitung = 11;
-        } else if (sisatahun == 3) {
-            bulanhitung = 26;
-        } else if (sisatahun == 4) {
-            bulanhitung = 7;
-        } else if (sisatahun == 5) {
-            bulanhitung = 22;
-        } else if (sisatahun == 6) {
-            bulanhitung = 2;
-        } else if (sisatahun == 7) {
-            bulanhitung = 17;
-        } else if (sisatahun == 8) {
-            bulanhitung = 33;
-        } else if (sisatahun == 9) {
-            bulanhitung = 13;
-        } else if (sisatahun == 10) {
-            bulanhitung = 28;
-        } else if (sisatahun == 11) {
-            bulanhitung = 8;
-        } else if (sisatahun == 12) {
-            bulanhitung = 24;
-        } else if (sisatahun == 13) {
-            bulanhitung = 4;
-        } else if (sisatahun == 14) {
-            bulanhitung = 19;
-        } else if (sisatahun == 15) {
-            bulanhitung = 34;
-        } else if (sisatahun == 16) {
-            bulanhitung = 15;
-        } else if (sisatahun == 17) {
-            bulanhitung = 30;
-        } else if (sisatahun == 18) {
-            bulanhitung = 10;
-        } else if (sisatahun == 19) {
-            bulanhitung = 25;
-        }
-    } else if (bulan == 6) {
-        if (sisatahun == 0) {
-            bulanhitung = 12;
-        } else if (sisatahun == 1) {
-            bulanhitung = 27;
-        } else if (sisatahun == 2) {
-            bulanhitung = 7;
-        } else if (sisatahun == 3) {
-            bulanhitung = 22;
-        } else if (sisatahun == 4) {
-            bulanhitung = 3;
-        } else if (sisatahun == 5) {
-            bulanhitung = 18;
-        } else if (sisatahun == 6) {
-            bulanhitung = 33;
-        } else if (sisatahun == 7) {
-            bulanhitung = 13;
-        } else if (sisatahun == 8) {
-            bulanhitung = 29;
-        } else if (sisatahun == 9) {
-            bulanhitung = 9;
-        } else if (sisatahun == 10) {
-            bulanhitung = 24;
-        } else if (sisatahun == 11) {
-            bulanhitung = 4;
-        } else if (sisatahun == 12) {
-            bulanhitung = 20;
-        } else if (sisatahun == 13) {
-            bulanhitung = 0;
-        } else if (sisatahun == 14) {
-            bulanhitung = 15;
-        } else if (sisatahun == 15) {
-            bulanhitung = 30;
-        } else if (sisatahun == 16) {
-            bulanhitung = 11;
-        } else if (sisatahun == 17) {
-            bulanhitung = 26;
-        } else if (sisatahun == 18) {
-            bulanhitung = 6;
-        } else if (sisatahun == 19) {
-            bulanhitung = 21;
-        }
-    } else if (bulan == 7) {
-        if (sisatahun == 0) {
-            bulanhitung = 7;
-        } else if (sisatahun == 1) {
-            bulanhitung = 22;
-        } else if (sisatahun == 2) {
-            bulanhitung = 2;
-        } else if (sisatahun == 3) {
-            bulanhitung = 17;
-        } else if (sisatahun == 4) {
-            bulanhitung = 33;
-        } else if (sisatahun == 5) {
-            bulanhitung = 13;
-        } else if (sisatahun == 6) {
-            bulanhitung = 28;
-        } else if (sisatahun == 7) {
-            bulanhitung = 8;
-        } else if (sisatahun == 8) {
-            bulanhitung = 24;
-        } else if (sisatahun == 9) {
-            bulanhitung = 4;
-        } else if (sisatahun == 10) {
-            bulanhitung = 19;
-        } else if (sisatahun == 11) {
-            bulanhitung = 34;
-        } else if (sisatahun == 12) {
-            bulanhitung = 15;
-        } else if (sisatahun == 13) {
-            bulanhitung = 30;
-        } else if (sisatahun == 14) {
-            bulanhitung = 10;
-        } else if (sisatahun == 15) {
-            bulanhitung = 25;
-        } else if (sisatahun == 16) {
-            bulanhitung = 6;
-        } else if (sisatahun == 17) {
-            bulanhitung = 21;
-        } else if (sisatahun == 18) {
-            bulanhitung = 1;
-        } else if (sisatahun == 19) {
-            bulanhitung = 16;
-        }
-    } else if (bulan == 8) {
-        if (sisatahun == 0) {
-            bulanhitung = 3;
-        } else if (sisatahun == 1) {
-            bulanhitung = 18;
-        } else if (sisatahun == 2) {
-            bulanhitung = 33;
-        } else if (sisatahun == 3) {
-            bulanhitung = 13;
-        } else if (sisatahun == 4) {
-            bulanhitung = 29;
-        } else if (sisatahun == 5) {
-            bulanhitung = 9;
-        } else if (sisatahun == 6) {
-            bulanhitung = 24;
-        } else if (sisatahun == 7) {
-            bulanhitung = 4;
-        } else if (sisatahun == 8) {
-            bulanhitung = 20;
-        } else if (sisatahun == 9) {
-            bulanhitung = 0;
-        } else if (sisatahun == 10) {
-            bulanhitung = 15;
-        } else if (sisatahun == 11) {
-            bulanhitung = 30;
-        } else if (sisatahun == 12) {
-            bulanhitung = 11;
-        } else if (sisatahun == 13) {
-            bulanhitung = 26;
-        } else if (sisatahun == 14) {
-            bulanhitung = 6;
-        } else if (sisatahun == 15) {
-            bulanhitung = 21;
-        } else if (sisatahun == 16) {
-            bulanhitung = 2;
-        } else if (sisatahun == 17) {
-            bulanhitung = 17;
-        } else if (sisatahun == 18) {
-            bulanhitung = 32;
-        } else if (sisatahun == 19) {
-            bulanhitung = 12;
-        }
-    } else if (bulan == 9) {
-        if (sisatahun == 0) {
-            bulanhitung = 34;
-        } else if (sisatahun == 1) {
-            bulanhitung = 14;
-        } else if (sisatahun == 2) {
-            bulanhitung = 29;
-        } else if (sisatahun == 3) {
-            bulanhitung = 9;
-        } else if (sisatahun == 4) {
-            bulanhitung = 25;
-        } else if (sisatahun == 5) {
-            bulanhitung = 5;
-        } else if (sisatahun == 6) {
-            bulanhitung = 20;
-        } else if (sisatahun == 7) {
-            bulanhitung = 0;
-        } else if (sisatahun == 8) {
-            bulanhitung = 16;
-        } else if (sisatahun == 9) {
-            bulanhitung = 31;
-        } else if (sisatahun == 10) {
-            bulanhitung = 11;
-        } else if (sisatahun == 11) {
-            bulanhitung = 26;
-        } else if (sisatahun == 12) {
-            bulanhitung = 7;
-        } else if (sisatahun == 13) {
-            bulanhitung = 22;
-        } else if (sisatahun == 14) {
-            bulanhitung = 2;
-        } else if (sisatahun == 15) {
-            bulanhitung = 17;
-        } else if (sisatahun == 16) {
-            bulanhitung = 33;
-        } else if (sisatahun == 17) {
-            bulanhitung = 13;
-        } else if (sisatahun == 18) {
-            bulanhitung = 28;
-        } else if (sisatahun == 19) {
-            bulanhitung = 8;
-        }
-    } else if (bulan == 10) {
-        if (sisatahun == 0) {
-            bulanhitung = 29;
-        } else if (sisatahun == 1) {
-            bulanhitung = 9;
-        } else if (sisatahun == 2) {
-            bulanhitung = 24;
-        } else if (sisatahun == 3) {
-            bulanhitung = 4;
-        } else if (sisatahun == 4) {
-            bulanhitung = 20;
-        } else if (sisatahun == 5) {
-            bulanhitung = 0;
-        } else if (sisatahun == 6) {
-            bulanhitung = 15;
-        } else if (sisatahun == 7) {
-            bulanhitung = 30;
-        } else if (sisatahun == 8) {
-            bulanhitung = 11;
-        } else if (sisatahun == 9) {
-            bulanhitung = 16;
-        } else if (sisatahun == 10) {
-            bulanhitung = 6;
-        } else if (sisatahun == 11) {
-            bulanhitung = 21;
-        } else if (sisatahun == 12) {
-            bulanhitung = 2;
-        } else if (sisatahun == 13) {
-            bulanhitung = 17;
-        } else if (sisatahun == 14) {
-            bulanhitung = 32;
-        } else if (sisatahun == 15) {
-            bulanhitung = 12;
-        } else if (sisatahun == 16) {
-            bulanhitung = 28;
-        } else if (sisatahun == 17) {
-            bulanhitung = 8;
-        } else if (sisatahun == 18) {
-            bulanhitung = 23;
-        } else if (sisatahun == 19) {
-            bulanhitung = 3;
-        }
-    } else if (bulan == 11) {
-        if (sisatahun == 0) {
-            bulanhitung = 25;
-        } else if (sisatahun == 1) {
-            bulanhitung = 5;
-        } else if (sisatahun == 2) {
-            bulanhitung = 20;
-        } else if (sisatahun == 3) {
-            bulanhitung = 0;
-        } else if (sisatahun == 4) {
-            bulanhitung = 16;
-        } else if (sisatahun == 5) {
-            bulanhitung = 31;
-        } else if (sisatahun == 6) {
-            bulanhitung = 11;
-        } else if (sisatahun == 7) {
-            bulanhitung = 26;
-        } else if (sisatahun == 8) {
-            bulanhitung = 7;
-        } else if (sisatahun == 9) {
-            bulanhitung = 22;
-        } else if (sisatahun == 10) {
-            bulanhitung = 2;
-        } else if (sisatahun == 11) {
-            bulanhitung = 17;
-        } else if (sisatahun == 12) {
-            bulanhitung = 33;
-        } else if (sisatahun == 13) {
-            bulanhitung = 13;
-        } else if (sisatahun == 14) {
-            bulanhitung = 28;
-        } else if (sisatahun == 15) {
-            bulanhitung = 8;
-        } else if (sisatahun == 16) {
-            bulanhitung = 24;
-        } else if (sisatahun == 17) {
-            bulanhitung = 4;
-        } else if (sisatahun == 18) {
-            bulanhitung = 19;
-        } else if (sisatahun == 19) {
-            bulanhitung = 34;
-        }
-    } else if (bulan == 12) {
-        if (sisatahun == 0) {
-            bulanhitung = 20;
-        } else if (sisatahun == 1) {
-            bulanhitung = 0;
-        } else if (sisatahun == 2) {
-            bulanhitung = 15;
-        } else if (sisatahun == 3) {
-            bulanhitung = 30;
-        } else if (sisatahun == 4) {
-            bulanhitung = 11;
-        } else if (sisatahun == 5) {
-            bulanhitung = 26;
-        } else if (sisatahun == 6) {
-            bulanhitung = 6;
-        } else if (sisatahun == 7) {
-            bulanhitung = 21;
-        } else if (sisatahun == 8) {
-            bulanhitung = 2;
-        } else if (sisatahun == 9) {
-            bulanhitung = 17;
-        } else if (sisatahun == 10) {
-            bulanhitung = 32;
-        } else if (sisatahun == 11) {
-            bulanhitung = 21;
-        } else if (sisatahun == 12) {
-            bulanhitung = 28;
-        } else if (sisatahun == 13) {
-            bulanhitung = 8;
-        } else if (sisatahun == 14) {
-            bulanhitung = 23;
-        } else if (sisatahun == 15) {
-            bulanhitung = 3;
-        } else if (sisatahun == 16) {
-            bulanhitung = 19;
-        } else if (sisatahun == 17) {
-            bulanhitung = 34;
-        } else if (sisatahun == 18) {
-            bulanhitung = 14;
-        } else if (sisatahun == 19) {
-            bulanhitung = 29;
-        }
-    } else {
-        bulanhitung = 0;
-    }
-
-    var hasil = tahunhitung + bulanhitung + tanggal;
-    if (hasil <= 35) {
-        hasil = hasil;
-    } else {
-        hasil = hasil - 35;
-        if (hasil <= 35) {
-            hasil = hasil;
-        } else {
-            hasil = hasil - 35;
-        }
-    }
-
-    var hari;
-    var pasaran;
-    if (hasil == 1) {
-        hari = 'Senin';
-        pasaran = 'Legi';
-    } else if (hasil == 2) {
-        hari = 'Selasa';
-        pasaran = 'Pahing';
-    } else if (hasil == 3) {
-        hari = 'Rabu';
-        pasaran = 'Pon';
-    } else if (hasil == 4) {
-        hari = 'Kamis';
-        pasaran = 'Wage';
-    } else if (hasil == 5) {
-        hari = "Jum'at";
-        pasaran = 'Kliwon';
-    } else if (hasil == 6) {
-        hari = 'Sabtu';
-        pasaran = 'Legi';
-    } else if (hasil == 7) {
-        hari = 'Minggu';
-        pasaran = 'Pahing';
-    } else if (hasil == 8) {
-        hari = 'Senin';
-        pasaran = 'Pon';
-    } else if (hasil == 9) {
-        hari = 'Selasa';
-        pasaran = 'Wage';
-    } else if (hasil == 10) {
-        hari = 'Rabu';
-        pasaran = 'Kliwon';
-    } else if (hasil == 11) {
-        hari = 'Kamis';
-        pasaran = 'Legi';
-    } else if (hasil == 12) {
-        hari = "Jum'at";
-        pasaran = 'Pahing';
-    } else if (hasil == 13) {
-        hari = 'Sabtu';
-        pasaran = 'Pon';
-    } else if (hasil == 14) {
-        hari = 'Minggu';
-        pasaran = 'Wage';
-    } else if (hasil == 15) {
-        hari = 'Senin';
-        pasaran = 'Kliwon';
-    } else if (hasil == 16) {
-        hari = 'Selasa';
-        pasaran = 'Legi';
-    } else if (hasil == 17) {
-        hari = 'Rabu';
-        pasaran = 'Pahing';
-    } else if (hasil == 18) {
-        hari = 'Kamis';
-        pasaran = 'Pon';
-    } else if (hasil == 19) {
-        hari = "Jum'at";
-        pasaran = 'Wage';
-    } else if (hasil == 20) {
-        hari = 'Sabtu';
-        pasaran = 'Kliwon';
-    } else if (hasil == 21) {
-        hari = 'Minggu';
-        pasaran = 'Legi';
-    } else if (hasil == 22) {
-        hari = 'Senin';
-        pasaran = 'Pahing';
-    } else if (hasil == 23) {
-        hari = 'Selasa';
-        pasaran = 'Pon';
-    } else if (hasil == 24) {
-        hari = 'Rabu';
-        pasaran = 'Wage';
-    } else if (hasil == 25) {
-        hari = 'Kamis';
-        pasaran = 'Kliwon';
-    } else if (hasil == 26) {
-        hari = "Jum'at";
-        pasaran = 'Legi';
-    } else if (hasil == 27) {
-        hari = 'Sabtu';
-        pasaran = 'Pahing';
-    } else if (hasil == 28) {
-        hari = 'Minggu';
-        pasaran = 'Pon';
-    } else if (hasil == 29) {
-        hari = 'Senin';
-        pasaran = 'Wage';
-    } else if (hasil == 30) {
-        hari = 'Selasa';
-        pasaran = 'Kliwon';
-    } else if (hasil == 31) {
-        hari = 'Rabu';
-        pasaran = 'Legi';
-    } else if (hasil == 32) {
-        hari = 'Kamis';
-        pasaran = 'Pahing';
-    } else if (hasil == 33) {
-        hari = "Jum'at";
-        pasaran = 'Pon';
-    } else if (hasil == 34) {
-        hari = 'Sabtu';
-        pasaran = 'Wage';
-    } else if (hasil == 35) {
-        hari = 'Minggu';
-        pasaran = 'Kliwon';
-    }
-    var weton = [hari, pasaran];
-    return weton;
-}
-
-function hitung(hari, pasaran) {
-    if (hari == 'Minggu') {
-        harihitung = 5;
-    } else if (hari == 'Senin') {
-        harihitung = 4;
-    } else if (hari == 'Selasa') {
-        harihitung = 3;
-    } else if (hari == 'Rabu') {
-        harihitung = 7;
-    } else if (hari == 'Kamis') {
-        harihitung = 8;
-    } else if (hari == "Jum'at") {
-        harihitung = 6;
-    } else if (hari == 'Sabtu') {
-        harihitung = 9;
-    }
-
-    if (pasaran == 'Legi') {
-        pasaranhitung = 5;
-    } else if (pasaran == 'Pahing') {
-        pasaranhitung = 9;
-    } else if (pasaran == 'Pon') {
-        pasaranhitung = 7;
-    } else if (pasaran == 'Wage') {
-        pasaranhitung = 4;
-    } else if (pasaran == 'Kliwon') {
-        pasaranhitung = 8;
-    }
-
-    var hasil = harihitung + pasaranhitung;
-    return hasil;
-}
-
-function hasil(weton1, weton2) {
-    hasilhitung = weton1 + weton2;
-    if (hasilhitung == 1 || hasilhitung == 9 || hasilhitung == 10 || hasilhitung == 18 || hasilhitung == 19 || hasilhitung == 27 || hasilhitung == 28 || hasilhitung == 36) {
-        has = 'PEGAT';
-        keterangan =
-            'Pegat atau pegatan, dalam bahasa jawa berarti bercerai. Pasangan ini kemungkinan akan sering menghadapi masalah dikemudian hari. Masalah itu bisa dari masalah ekonomi, perselingkuhan, kekuasaan yang bisa menyebabkan perceraian.';
-    } else if (hasilhitung == 2 || hasilhitung == 11 || hasilhitung == 20 || hasilhitung == 29) {
-        has = 'RATU';
-        keterangan =
-            'Ratu identik dengan sosok yang dihormati. Jika hasilnya ratu, pasangan ini bisa dikatakan sudah cocok dan berjodoh. Sangat dihargai dan disegani oleh tetangga maupun lingkungan sekitar. Bahkan tak sedikit orang sekitar yang iri dengan keharmonisannya dalam membina rumah tangga.';
-    } else if (hasilhitung == 3 || hasilhitung == 12 || hasilhitung == 21 || hasilhitung == 30) {
-        has = 'JODOH';
-        keterangan = 'Namanya saja sudah jodoh. Jika hasilnya Jodoh, pasangan ini memang ditakdirkan berjodoh. Mereka bisa saling menerima segala kekurangan maupun kelebihan masing-masing. Nasib rumah tangga dapat harmonis sampai tua.';
-    } else if (hasilhitung == 4 || hasilhitung == 13 || hasilhitung == 22 || hasilhitung == 31) {
-        has = 'TOPO';
-        keterangan =
-            'Topo, dalam bahasa jawa bisa diartikan bertirakat. Pasangan ini akan sering mengalami kesusahan di awal-awal membina rumah tangga, namun pada akhirnya akan bahagia. Persoalan rumah tangga bisa dari ekonomi dan lain sebagainya. Tapi setelah mempunyai anak dan cukup lama berumah tangga, hidupnya akan sukses serta bahagia.';
-    } else if (hasilhitung == 5 || hasilhitung == 14 || hasilhitung == 23 || hasilhitung == 32) {
-        has = 'TINARI';
-        keterangan = 'Pasangan ini akan mendapatkan kebahagiaan. Kemudahan dalam mencari rezeki dan tidak akan hidup berkekurangan. Hidupnya juga diliputi keberuntungan.';
-    } else if (hasilhitung == 6 || hasilhitung == 15 || hasilhitung == 24 || hasilhitung == 33) {
-        has = 'PADU';
-        keterangan =
-            'Padu dalam bahasa jawa berarti cekcok atau pertengkaran. Rumah tangga pasangan ini akan sering mengalami pertikaian atau pertengkaran. Meski sering terjadi pertengkaran, nasib rumah tangga tidak sampai bercerai. Pertengkaran ini bahkan dipicu dari hal-hal yang bersifat sepele.';
-    } else if (hasilhitung == 7 || hasilhitung == 16 || hasilhitung == 25 || hasilhitung == 34) {
-        has = 'SUJANAN';
-        keterangan = 'Rumah tangga ini akan sering mengalami percekcokan dan masalah perselingkuhan. Entah dari sang suami atau istri yang mulai membuat hubungan perselingkuhan.';
-    } else if (hasilhitung == 8 || hasilhitung == 17 || hasilhitung == 26 || hasilhitung == 35) {
-        has = 'PESTHI';
-        keterangan = 'Rumah tangga akan berjalan dengan sangat harmonis, rukun , adem, ayem, tenteram dan sejahtera sampai tua. Sedikit masalah namun tidak megganggu keharmonisan.';
-    }
-
-    var hasil = [has, keterangan];
-    return hasil;
-}
-
-
-function wetonsisa(jumlah, jumlah2) {
-    hasilhitung=jumlah+jumlah2;
-    wetonsisa=hasilhitung%7;
+    var siklus = Math.floor((explode[0]-1)/4);
+    var sisaSiklus = (explode[0]-1) % 4;
     
-if (wetonsisa==0){
-        sisa='Lebu Ketiup Angin';
+     if (sisaSiklus !== 0 ){
+         sisaSiklus = sisaSiklus * 365;
+        }
+    var hariSiklus = siklus * 1461;
+        var w = explode[1];
+        
+        var q = 0;
+            for(var i=1; i<w; i++){
+                q = q+a[i];
+            }
+        var haridalamTahun = q + parseInt(explode[2]);
 
-        keterangan='sulit mencapai cita-cita, sering mendapatkan kesusahan, dan sering pindah rumah. Dalam primbon jawa biasanya dilakukan menabur debu saat akan Ijab Qobul guna menolak bala hal tersebut.';
+    var jumlahHari = hariSiklus + sisaSiklus + haridalamTahun;
 
-    }else if (wetonsisa==1){
+    //Koreksi Gregorius dan selisih hijriyah dan masehi
 
-        sisa='Wasesasegara';
-        keterangan='mempunyai watak yang sabar, pemaaf, berbudi luhur, dan berwibawa.';
-    }else if (wetonsisa==2){
+    var selisihdankoreksi = 227029;
+    jumlahHari = jumlahHari - selisihdankoreksi;
+  
+    // Masehi
+    var xmasehi = jumlahHari % 7;
 
-        sisa='Tunggaksemi';
-        keterangan='rezeki dimudahkan dan dilancarkan.';
-    }else if (wetonsisa==3){
+    // Pasaran
+    var xpasaran = jumlahHari % 5;
 
-        sisa='Satriya Wibawa';
-        keterangan='memperoleh kemuliaan dan keluhuran yang tinggi.';
-    }else if (wetonsisa==4){
+    var day = ["Kamis", "Jum'at","Sabtu","Minggu","Senin","Selasa","Rabu","Kamis"]
+    var pasaran = ["Kliwon","Legi","Pahing","Pon","Wage","Kliwon"]
 
-        sisa='Sumur Sinaba';
-        keterangan='banyak orang yang datang berguru dan meminta ilmu.';
-    }else if (wetonsisa==5){
+    var ankday = [8,6,9,5,4,3,7,8]
+    var ankpasaran = [8,5,9,7,4,8]
 
-        sisa='Satriya Wirang';
-        keterangan='sering mendapatkan duka cita. Kesusahan , sering malu akibat tindakannya sendiri. Dalam kitab primbon jawa, untuk menolak balak hal tersebut bisa memotong ayam saat Ijab Qobul.';
-    }else if (wetonsisa==6){
+    var angkaWeton = ankday[xmasehi]+ankpasaran[xpasaran];
 
-        sisa='Bumikepetak';
-        keterangan='hatinya lapang, banyak mengalami cobaan dan rintangan hidup, serta pekerja keras. Biasanya untuk menolak hal tersebut dapat memendam/mengubur tanah saat akan Ijab Qobul.';
-    }
-
-    var hasil = [sisa, keterangan];
-    return hasil;
+    return [date, day[xmasehi], pasaran[xpasaran], angkaWeton];
 }
+
+
+function weton(x){
+    var pegat = [1,9,10,18,19,27,28,36,'PEGAT','"Hasil pegat, bahwa menurut hitungan weton jawa kemungkinan pasangan akan sering mendapatkan masalah di kemudian hari, bisa saja masalah ekonomi, kekuasaan, perselingkuhan hingga menyebabkan pasangan bercerai."']
+
+    var ratu = [2,11,20,29,'RATU','"Hasil Ratu, menurut hitungan weton jawa bisa dikatakan bahwa pasangan ini memang sudah jodohnya. Karena didalam kehidupan nanti keluarganya akan sangat dihargai dan disegani oleh tetangga maupun masyarakat sekitar. Bahkan banyak orang yang iri hati karena keharmonisannya dalam membina rumah tangga."']
+
+    var jodo = [3,12,21,30,'JODOH','"Hasil Jodoh, menurut hitungan weton jawa pasangan ini memang beneran cocok dan berjodoh. Karena dapat saling menerima baik kelebihan atau kekurangannya. Selain itu rumah tangganya dapat rukun sampai tua nanti."']
+
+    var topo = [4,13,22,31,'TOPO','"Hasil Topo, menurut hitungan jawa di gambarkan dalam membina rumah tangga nanti akan mengalami kesusahan di awal, tetapi akan bahagia di akhir nanti. Masalah ini bisa saja karena masalah ekonomi dan masih banyak lagi. Namun ketika sudah mempunyai anak dan cukup lama berumah tangga, di hari itulah kehidupanya akan menjadi sukses dan bahagia."']
+
+    var tinari = [5, 14, 23, 32,'TINARI','"Hasil Tinari, menurut hitungan weton jawanya berarti akan menemukan kebehagaiaan dimasa nanti. Selain itu gampang dalam mencari rezeki dan sering mendapatkan keberuntungan."']
+
+    var padu = [6, 15, 24, 33,'PADU','"Hasil Padu, menurut hitungan weton jawa digambarkan dalam berumah tangganya nanti akan sering mengalami sebuah pertengkaran. Namun tidak sampai mengarah ke seuah perceraian. Masalah pertengkaran ini digambarkan hanya masalah yang sifatnya cukup sepele."']
+
+    var sujanan = [7, 16, 25, 34,'SUJANAN','"Hasil sujanan, menurut hitungan weton jawa digambarkan bahwa dalam berumah tangganya nanti akan mengalami sebuah pertengkaran, bisa saja kerana perselingkuhan yang terjadi yang di mulai dari pahak laki-laki atau si perempuan."']
+
+    var pesthi = [8, 17, 26, 35,'PESTHI','"Hasil Pesthi, menurut hitungan weton jawa digambarkan bahwa dalam berumah tangganya nanti akan selalu rukun, tenteram, adem ayem hingga tua nanti. Meskipun ada masalah, namun tidak akan bisa merusak keharmonisan keluarganya."']
+
+
+    if(pegat.some(item => item == x)){
+        return [pegat[8], pegat[9], "FFC4C8"];
+    }else if(ratu.some(item => item == x)){
+        return [ratu[4], ratu[5], "C6FFC2"];
+    }else if(jodo.some(item => item == x)){
+        return [jodo[4], jodo[5], "C6FFC2"];
+    }else if(topo.some(item => item == x)){
+        return [topo[4], topo[5], "E5E4C7"];
+    }else if(tinari.some(item => item == x)){
+        return [tinari[4], tinari[5], "E5E4C7"];
+    }else if(padu.some(item => item == x)){
+        return [padu[4], padu[5], "FFC4C8"];
+    }else if(sujanan.some(item => item == x)){
+        return [sujanan[4], sujanan[5], "FFC4C8"];
+    }else if(pesthi.some(item => item == x)){
+        return [pesthi[4], pesthi[5], "C6FFC2"];
+    }
+}
+
+
+$('#submit').on('click', function () {
+    $("#result").html("");
+
+     //validasi nama
+     var nama = $("#inputNama1").val().length;
+     var nama2 = $("#inputNama2").val().length;
+     if (nama == 0) {			
+         document.getElementById('nama-alert').innerHTML = "Nama tidak boleh kosong :)";
+         //return false;
+     }else{
+         document.getElementById('nama-alert').innerHTML = "";
+     }
+     if (nama2 == 0) {			
+         document.getElementById('nama2-alert').innerHTML = "Waduh Pasanganmu kok kosong?";
+         //return false;
+     }else{
+         document.getElementById('nama2-alert').innerHTML = "";
+     }
+
+    //validasi tanggal
+    var alertTgl1 = $("#inputTanggal1").val().length;
+    var alertTgl2 = $("#inputTanggal2").val().length;
+        if (alertTgl1 == 0) {			
+            document.getElementById('tanggal-alert').innerHTML = "Tanggalnya diisi dulu gaes";
+            //return false;
+        }else{
+            document.getElementById('tanggal-alert').innerHTML = "";
+        }
+        if (alertTgl2 == 0) {			
+            document.getElementById('tanggal2-alert').innerHTML = "Tanggalnya diisi dulu gaes";
+            //return false;
+        }else{
+            document.getElementById('tanggal2-alert').innerHTML = "";
+        }
+   $("#result").html("");
+
+    var nama1 = $('#inputNama1').val();
+    var nama2 = $('#inputNama2').val();	
+
+    var tanggal1 = $('#inputTanggal1').val();
+    var tanggal2 = $('#inputTanggal2').val();
+    
+    var layla = Hitung(tanggal1);
+
+    var majnun = Hitung(tanggal2);
+    
+    
+	
+    var total = layla[3]+majnun[3];
+    var final = weton(total)
+
+    $("#result").append(`                    
+    
+<div class='weton'>
+    <tbody>
+                Nama Kamu : <b>`+nama1+`</b><br/>
+                Tanggal Lahir : <b>`+layla[0][0]+` `+layla[0][1]+` `+layla[0][2]+` </b><br/>
+                Pasaran : <b>`+layla[1]+ ` `+layla[2]+` </b>  <br/>
+                Neptu  : <b>`+layla[3]+` </b> <br/>
+           
+<i class='separate'></i>    
+            
+                Pasangan Kamu : <b>`+nama2+`</b><br/>
+                Tanggal Lahir : <b>`+majnun[0][0]+` `+majnun[0][1]+` `+majnun[0][2]+` </b><br/>
+                Pasaran : <b> `+majnun[1]+ ` `+majnun[2]+` </b><br/>
+                Neptu  : <b> `+majnun[3]+`  </b><br/>
+</tbody>
+<div class="card-content">  Jadi <i>Neptu</i>  <b>`+layla[3]+`</b> dan <b>`+majnun[3]+`</b> <i>Wetonnya</i>  <b>`+total+`</b></div></div>    
+                       
+<div class='note noteAlert'><center><font color='red'><h3>`+final[0]+`  (`+total+`) </h3></font> </center></div>
+                    <div class='note'>
+`+final[1]+`
+<div class='block-author'>
+    <div class='block-img'>
+      <img class='lazy' alt='Author' data-src='https://1.bp.blogspot.com/-TJveDHmopf8/YAczjGBH28I/AAAAAAAAHts/Ypusd4262wgzQAzJySOLp_jrldMW2_enwCLcBGAsYHQ/s1134/blangkon.png' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+    </div>
+    
+  <div class='block-info'><span class='block-name'>Dikutip dari berbagai sumber</span><span class='block-desc'>Source Code by <a href="https://www.panjinawangkung.com">KENTHUS</a><br>
+     Made with <svg class='svg-icon' width='10' height='10' viewBox='0 0 20 20'>
+<path d='M9.719,17.073l-6.562-6.51c-0.27-0.268-0.504-0.567-0.696-0.888C1.385,7.89,1.67,5.613,3.155,4.14c0.864-0.856,2.012-1.329,3.233-1.329c1.924,0,3.115,1.12,3.612,1.752c0.499-0.634,1.689-1.752,3.612-1.752c1.221,0,2.369,0.472,3.233,1.329c1.484,1.473,1.771,3.75,0.693,5.537c-0.19,0.32-0.425,0.618-0.695,0.887l-6.562,6.51C10.125,17.229,9.875,17.229,9.719,17.073 M6.388,3.61C5.379,3.61,4.431,4,3.717,4.707C2.495,5.92,2.259,7.794,3.145,9.265c0.158,0.265,0.351,0.51,0.574,0.731L10,16.228l6.281-6.232c0.224-0.221,0.416-0.466,0.573-0.729c0.887-1.472,0.651-3.346-0.571-4.56C15.57,4,14.621,3.61,13.612,3.61c-1.43,0-2.639,0.786-3.268,1.863c-0.154,0.264-0.536,0.264-0.69,0C9.029,4.397,7.82,3.61,6.388,3.61'></path>
+</svg> in JaTim, ID
+    </span>
+    </div>
+  </div>
+</div>
+                </div>
+            
+                     `);
+                     
+    $('#myModal').modal('show');
+   
+
+})
