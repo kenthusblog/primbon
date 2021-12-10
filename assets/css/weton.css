@@ -10680,9 +10680,9 @@ th.day{
 	color: #2196f3;
 }
 
-div.card-title{
+div.card-judul{
 	border-radius: 2px 2px 0px 0px;
-    text-align: center;
+    text-align: left;
     padding: 15px 0px; 
     color: white;
 	background-color: #3abbfc;
@@ -10691,6 +10691,15 @@ div.card-title{
     margin-right: -10px;
     border-radius: 10px 10px 0px 0px;
 }
+div.card-judul .card-judul1{
+	font-size:25px;
+}
+div.no-margin{
+	margin-bottom: 0px;
+	display: block;
+}
+
+
 
 
 
