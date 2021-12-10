@@ -225,9 +225,9 @@ $('#year').text(g_year);
 						</div>
 					</div>
 				</div>
-				<div id="calendar" class="calendar-java">
-					<div id='setbulan'></div>
-					<table class="cal_table tbl-hijr" border="1">
+				<b><div id="setbulan"></div></b>
+				<div class="card-content">
+                          <table class="cal_table tbl-hijr" border="1">
 						  <tbody>
 							<tr class="row-days">
 								<th class="day" style="color: #f44336;">Min</th>
@@ -238,6 +238,7 @@ $('#year').text(g_year);
 								<th class="day" style="color: #4caf50;">Jum</th>
 								<th class="day">Sab</th>
 								<th class="day">Wuku</th>								
+							</tr>
 							<tr class="row-0">
 								<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
 								<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
@@ -300,20 +301,13 @@ $('#year').text(g_year);
 							</tr>
 						  </tbody>
 						</table>
-					</div>
-				<div class="card-tabs">
-					Hari Libur
-				</div>
-				<div>
-					<div id="harilibur">
+					<br>
+				<div class="card">
+                  <font color="red"><b>Hari Libur</b>
+				<div id="harilibur">
 						<ul class="collection">
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</div>
+						<li class="collection-item"><span class="title"></span><a href="#!" class="secondary-content"></a></li></ul>
+                  </div></font></div>
 	
 		<div class="kalender">
 			<div class="card" align="center">
