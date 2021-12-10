@@ -10788,11 +10788,11 @@ p.m-date{
   text-decoration: none;
   cursor: pointer;
 }
-#blockquote{
+.blockquote{
     font-size: 100% !important;
     padding: 10px 0px 10px 20px!important;
 }
-#blockquote:before{
+.blockquote:before{
     font-size:50px !important;
     left: -5px !important;
     top: -12px !important;
