@@ -151,7 +151,7 @@
                 <div class="mb-1 row">
                     <label class="col-sm-2 col-form-label" for="nama">Nama Pasangan</label>
                     <div class="col-sm-5">
-                        <input class="form-control" id="inputNama2" type="text" />
+                        <input class="form-control" id="inputNama2" type="date" />
                         <small class="form-text text-danger" id="nama2-alert"></small>
                     </div>
                 </div>
@@ -238,7 +238,6 @@
     <!-- Template Main JS File -->
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <script src="/assets/js/main.js "></script>
-    <script src="/assets/js/datepicker.js "></script>	
     
 	<script>
         var menu = document.getElementById("navigasi")
@@ -255,17 +254,7 @@
         
 		
 		
-		
-		 $(document).ready(function(){
-        $('#datetimepicker1').change(function(){
-            var hasilweton = hitungweton($('#datetimepicker1').val());
-            $('.hasilweton1').val(hasilweton);
-        });
-        $('#datetimepicker2').change(function(){
-            var hasilweton = hitungweton($('#datetimepicker2').val());
-            $('.hasilweton2').val(hasilweton);
-        });
-    })
+	
     </script>
   
 	
