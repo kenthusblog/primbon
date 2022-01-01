@@ -23,17 +23,13 @@
 <meta property="twitter:description" content="Kalender jawa online yang lengkap abadi disertai dengan detail weton, wuku, neptu, tahun jawa. dengan tampilan yang simple.">
 <meta property="twitter:image" content="assets/img/kalender.png">
 	
-	
-	
-
-    <!-- Favicons -->
+   <!-- Favicons -->
     <link href="assets/img/webico.png" rel="icon">
     <link href="assets/img/webico.png" rel="apple-touch-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    
-	<!-- CSS Source -->
+      <!-- CSS Source -->
        <link rel="shortcut icon" href="/img/favicon.ico">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        
@@ -146,7 +142,7 @@
                 <div class="mb-1 row">
                     <label class="col-sm-2 col-form-label" for="inputNama">Tanggal Lahir</label>
                   <div class="col-sm-5">
-                     <input class="form-control" id="inputTanggal1" type="date"/>
+                     <input class="form-control datetimepicker" id="inputTanggal1" type="text"/>
                         <small class="form-text text-danger" id="tanggal-alert"></small>
                     </div>
                 </div>
@@ -162,7 +158,7 @@
                 <div class="mb-1 row">
                     <label class="col-sm-2 col-form-label" for="inputNama">Tanggal Lahir</label>
                     <div class="col-sm-5">
-                        <input class="form-control" id="inputTanggal2" type="date" />
+                        <input class="form-control datetimepicker" id="inputTanggal2" type="date" />
                         <small class="form-text text-danger" id="tanggal2-alert"></small>
                     </div>
             </div>
@@ -187,11 +183,7 @@
 </script>
 <script src="weton.js"></script>  
               
-              
-              
-              
-              
-
+ 
           </div>
     </main>
     <!-- End #main -->
@@ -246,6 +238,7 @@
     <!-- Template Main JS File -->
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <script src="/assets/js/main.js "></script>
+    <script src="/assets/js/datepicker.js "></script>	
     
 	<script>
         var menu = document.getElementById("navigasi")
@@ -260,6 +253,19 @@
             }
         }
         
+		
+		
+		
+		 $(document).ready(function(){
+        $('#datetimepicker1').change(function(){
+            var hasilweton = hitungweton($('#datetimepicker1').val());
+            $('.hasilweton1').val(hasilweton);
+        });
+        $('#datetimepicker2').change(function(){
+            var hasilweton = hitungweton($('#datetimepicker2').val());
+            $('.hasilweton2').val(hasilweton);
+        });
+    })
     </script>
   
 	
