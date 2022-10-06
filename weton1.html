@@ -10,6 +10,13 @@
   var month = d1.getMonth() + 1;
    var year = d1.getFullYear();
  
+    var ankday = [8,6,9,5,4,3,7,8]
+    var ankpasaran = [8,5,9,7,4,8]
+ 
+    var angkaWeton = ankday[hari]+ankpasaran[pasaran];
+    
+    
+    
  switch(month) {
  case 0: month = "Januari"; break;
  case 1: month = "Februari"; break;
@@ -26,7 +33,7 @@
 }
  
  
-   document.write("Hari ini: " + hari + " " + pasar +" , <b>" + day + " " + month + " " + year + "</b><p>");
+   document.write("Hari ini: " + hari + " " + pasar +"  " + angkaWeton +", <b>" + day + " " + month + " " + year + "</b><p>");
 </script>
 
 
