@@ -1,3 +1,18 @@
+<script type="text/javascript">
+ var pasaran = new Array('Legi','Pahing','Pon','Wage','Kliwon');
+ var hari = new Array('Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Ahad');
+ var d2 = new Date("2014/01/27");
+ var d1 = new Date();
+  var selisih = Math.floor(Math.abs(d1-d2)/86400000);
+ var pasar = pasaran[selisih%5];
+ var hari = hari[selisih%7];
+ var day = d1.getDate();
+  var month = d1.getMonth() + 1;
+   var year = d1.getFullYear();
+   document.write("Hari ini: " + hari + " " + pasar +" <b>" + day + "/" + month + "/" + year + "</b><p>");
+</script>
+
+
 <style>
 fieldset {width:400px;
  background-color:#333;
