@@ -181,5 +181,94 @@
                
             </div></div>
             
+	
+	<script>
+        var __tanggal = prompt("Tanggal Lahir ?");
+        var __bulan = prompt("Bulan Lahir ?");
+        var __tahun = prompt("Tahun Lahir ?");
+        var __hasil = "";
+        var tanggalasli = ""
+        var tanggalLahir = new Date(__tahun, (__bulan - 1), __tanggal);
+
+        document.write("<h2 style='color: black; text-align: center;'>Weton untuk tanggal " + __tanggal + " " + hitungbulan(tanggalLahir) + " " + __tahun + " adalah</h2>");
+        __hasil = " " + hitunghari(tanggalLahir) + " " + hitungpasaran(tanggalLahir);
+        document.write("<h2 style='color: blue; text-align: center; font-size: xx-large;'>" + __hasil + "</h2>");
+
+        function hitungbulan(__bulan) {
+            nama_bulan = __bulan.getMonth();
+            switch (nama_bulan) {
+                case 0:
+                    return "Januari";
+                case 1:
+                    return "Februari";
+                case 2:
+                    return "Maret";
+                case 3:
+                    return "April";
+                case 4:
+                    return "Mei";
+                case 5:
+                    return "Juni";
+                case 6:
+                    return "Juli";
+                case 7:
+                    return "Agustus";
+                case 8:
+                    return "September";
+                case 9:
+                    return "Oktober";
+                case 10:
+                    return "November";
+                case 11:
+                    return "Desember";
+                default:
+                    return "";
+            }
+        }
+
+        function hitunghari(_tanggal) {
+            _hari = _tanggal.getDay();
+            switch (_hari) {
+                case 0:
+                    return "Minggu";
+                case 1:
+                    return "Senin";
+                case 2:
+                    return "Selasa";
+                case 3:
+                    return "Rabu";
+                case 4:
+                    return "Kamis";
+                case 5:
+                    return "Jum'at";
+                case 6:
+                    return "Sabtu";
+                default:
+                    return "";
+            }
+        }
+
+
+        function hitungpasaran(_tanggal) {
+            var awal = new Date(70, 0, 2);
+            pembagian = ((_tanggal.getTime() - awal.getTime()) + 86400000) / 432000000;
+            sisa = Math.round((pembagian - Math.floor(pembagian)) * 10) / 2;
+
+            switch (sisa) {
+                case 0:
+                    return "Wage";
+                case 1:
+                    return "Kliwon";
+                case 2:
+                    return "Legi";
+                case 3:
+                    return "Pahing";
+                case 4:
+                    return "Pon";
+                default:
+                    return "";
+            }
+        }
+    </script>
      
    
