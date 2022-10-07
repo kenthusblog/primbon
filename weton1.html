@@ -222,7 +222,7 @@
         hariKamu=HitungHari(TanggalMasukanKamu);
         pasaranKamu=HitungPasaran(TanggalMasukanKamu);
         document.write("Hari kelahiran anda adalah <b> "+hariKamu + " " + pasaranKamu+"</b>");
-
+        document.getElementById("hasil").style.display = "block";
         }
         }
        
@@ -261,3 +261,19 @@
                 </tr>
                 </table>
         </form>
+					    
+					    
+<div id='hasil' style='display:none'>
+	<div class="hasilhead"><b>Hasil Cek Weton Kamu</b></div>
+	<div class="item">Tanggal Lahir (Masehi)</div>
+	<div class="value"><b><span id='tggl_lahir_masehi'></span></b></div>
+	<div class="item">Tanggal Lahir (Hijriyah)</div>
+	<div class="value"><b><span id='tggl_lahir_hijriyah'></span></b></div>
+	<div class="item">Tanggal Lahir (Jawa)</div>
+	<div class="value"><b><span id='tggl_lahir_jawa'></span></b></div>
+	<div class="item">Pasaran</div>
+	<div class="value"><b><span id='pasaran'></span></b></div>
+	<div class="item">Neptu</div>
+  <div class="value"><b><span id='neptu'></span></b></div>
+	<div class="item">Warsa</div>
+	<div class="value"><b><span id='warsa'></span></b></div>
