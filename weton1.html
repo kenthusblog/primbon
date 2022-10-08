@@ -9,6 +9,8 @@
  var day = d1.getDate();
   var month = d1.getMonth() + 0;
    var year = d1.getFullYear();
+	
+	var bulan = d1.getMonth() + 0;
  
  
     
@@ -27,7 +29,7 @@
  case 11: month = "Desember"; break;
 }
  
- switch(month) {
+ switch(bulan) {
     case "Januari":
         if(day>=1 && day<21) {
             document.write("Mongso KAPITU" + '<br>') ;
@@ -164,7 +166,7 @@
  
  
 	
-	document.write("cek ini:  <b>" + day + " " + month + " </b><p>");
+	document.write("cek ini:  <b>" + day + " " + bulan + " </b><p>");
 	
  
    var tampilTanggal = " " + hari + ", " + tanggal + " " + bulan + " " + tahun;
