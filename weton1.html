@@ -10,7 +10,6 @@
   var month = d1.getMonth() + 0;
    var year = d1.getFullYear();
 	
-	var bulan = d1.getMonth() + 0;
  
  
     
@@ -131,7 +130,7 @@
             document.write('<img src="/assets/libra.jpg">');
         }
         break;
-    case "Oktober":
+	 case 9:  "Oktober":
         if(day>=1 && day<=13) {
             document.write("Mongso KAPAT" + '<br>');
             document.write('<img src="/assets/escorpio.jpg">');
@@ -169,7 +168,7 @@
  
  
 	
-	document.write("cek ini:  <b>" + day + " " + month[10] + " </b><p>");
+	document.write("cek ini:  <b>" + day + " " + month + " </b><p>");
 	
  
    var tampilTanggal = " " + hari + ", " + tanggal + " " + bulan + " " + tahun;
