@@ -211,7 +211,7 @@ function cekTanggal() {
     return 2 == document.nami_form.cekBulan.selectedIndex && document.nami_form.date.selectedIndex > 29 ? (alert("There are only a maximum of 29 days in February."), !1) : 4 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in April."), !1) : 6 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in June."), !1) : 9 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in September."), !1) : 11 != document.nami_form.cekBulan.selectedIndex || 31 != document.nami_form.date.selectedIndex || (alert("There are only 30 days in November."), !1)
 }
 	
-switch(cekBulan) {
+switch(cekMyZodiak) {
     case "Januari":
         if(day>=1 && day<21) {
             document.write("Mongso KAPITU" + '<br>') ;
