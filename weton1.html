@@ -209,11 +209,6 @@
 
 
 
-
-
-
-	
-	
 	
 <div class="Naminazodiak">
 <form name="nami_form"><table><tbody>
@@ -268,9 +263,9 @@
 <p id="sign">
 </p>
 
-<input id="myInput" type="text">
 
-<button onclick="myFunction()">Try it</button>
+
+<button onclick="cekMyZodiak()">Try it</button>
 
 <p id="demo"></p>
 
@@ -283,7 +278,6 @@ function cekMyZodiak() {
 function cekTanggal() {
     return 2 == document.nami_form.cekBulan.selectedIndex && document.nami_form.date.selectedIndex > 29 ? (alert("There are only a maximum of 29 days in February."), !1) : 4 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in April."), !1) : 6 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in June."), !1) : 9 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in September."), !1) : 11 != document.nami_form.cekBulan.selectedIndex || 31 != document.nami_form.date.selectedIndex || (alert("There are only 30 days in November."), !1)
 }
-
 
   var text;
   var fruits = document.getElementById("myInput").value;
