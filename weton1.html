@@ -260,14 +260,7 @@
 <input class="tsbtn" onclick="cekMyZodiak()" type="button" value="Cek"></td></tr>
 </tbody></table></form></div></div>
 
-<p id="sign">
-</p>
 
-
-
-<button onclick="cekMyZodiak()">Try it</button>
-
-<p id="demo"></p>
 
 
 <script type="text/javascript">
@@ -279,25 +272,7 @@ function cekTanggal() {
     return 2 == document.nami_form.cekBulan.selectedIndex && document.nami_form.date.selectedIndex > 29 ? (alert("There are only a maximum of 29 days in February."), !1) : 4 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in April."), !1) : 6 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in June."), !1) : 9 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in September."), !1) : 11 != document.nami_form.cekBulan.selectedIndex || 31 != document.nami_form.date.selectedIndex || (alert("There are only 30 days in November."), !1)
 }
 
-  var text;
-  var fruits = document.getElementById("myInput").value;
-
-  switch(fruits) {
-    case "Mongso KAPITU":
-      text = "Banana is good!";
-    break;
-    case "Orange":
-    text = "I am not a fan of orange.";
-    break;
-    case "Apple":
-    text = "How you like them apples?";
-    break;
-    default:
-    text = "I have never heard of that fruit...";
-  }
-  document.getElementById("demo").innerHTML = text;
-}	
-	
+ 	
 </script>
 
 
