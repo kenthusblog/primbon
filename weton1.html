@@ -272,21 +272,7 @@ function cekTanggal() {
     return 2 == document.nami_form.cekBulan.selectedIndex && document.nami_form.date.selectedIndex > 29 ? (alert("There are only a maximum of 29 days in February."), !1) : 4 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in April."), !1) : 6 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in June."), !1) : 9 == document.nami_form.cekBulan.selectedIndex && 31 == document.nami_form.date.selectedIndex ? (alert("There are only 30 days in September."), !1) : 11 != document.nami_form.cekBulan.selectedIndex || 31 != document.nami_form.date.selectedIndex || (alert("There are only 30 days in November."), !1)
 }
 
-	switch (cekMyZodiak) {
-    case 12:
-    case 1:
-    case 2: season = "winter"; break;
-    case 3:
-    case 4:
-    case 5: season = "spring"; break;
-    case 6:
-    case 7:
-    case 8: season = "summer"; break;
-    case 9:
-    case 10: season = "summer"; break;
-    case 11: season = "fall"; break;
-}
- 	
+	
 </script>
 
 
